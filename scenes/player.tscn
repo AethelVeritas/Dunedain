@@ -522,6 +522,7 @@ size = Vector2(11, 16)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(0, 2)
+scale = Vector2(1.99, 1.99)
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -532,7 +533,11 @@ animation = &"w-walk"
 frame_progress = 0.04029124
 
 [node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
-zoom = Vector2(3, 3)
+zoom = Vector2(1.99, 1.99)
+limit_left = -352
+limit_right = 248
+limit_bottom = 120
+position_smoothing_enabled = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -15)
