@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1qeq68ycsqxh"]
+[gd_scene load_steps=4 format=3 uid="uid://d1qeq68ycsqxh"]
 
 [ext_resource type="PackedScene" uid="uid://bh1w0ho7ry2kq" path="res://scenes/player.tscn" id="1_j5px3"]
 [ext_resource type="Texture2D" uid="uid://i5totv5mnkqh" path="res://icon.svg" id="2_twpsu"]
+[ext_resource type="PackedScene" uid="uid://dkqk7f4s0wbqy" path="res://scenes/turret.tscn" id="3_lrqlo"]
 
 [node name="Root" type="Node2D"]
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_j5px3")]
-position = Vector2(-489, -313)
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(-428, 90)
 texture = ExtResource("2_twpsu")
+
+[node name="Turret" parent="." instance=ExtResource("3_lrqlo")]
+position = Vector2(-369, -66)
+
+[node name="Player" parent="." instance=ExtResource("1_j5px3")]
+position = Vector2(-564, -419)
