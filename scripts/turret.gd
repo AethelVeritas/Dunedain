@@ -7,7 +7,7 @@ var target: Node2D = null
 @onready var ray_cast: RayCast2D = $"."
 @onready var gun_sprite: Sprite2D = $"../Sprite2D"
 
-const player = preload("uid://bh1w0ho7ry2kq")
+#const player = preload("uid://bh1w0ho7ry2kq")
 func _ready():
 	await get_tree().process_frame
 	target = find_target()
