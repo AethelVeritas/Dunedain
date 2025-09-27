@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkqk7f4s0wbqy"]
+
+[ext_resource type="Texture2D" uid="uid://dloqaw31bp6ln" path="res://assets/turret_FACE.png" id="1_el7wl"]
+[ext_resource type="Script" uid="uid://c04b3f0vvjflr" path="res://scripts/turret.gd" id="2_485p4"]
+
+[node name="Turret" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_el7wl")
+vframes = 10
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(250, 0)
+script = ExtResource("2_485p4")
+
+[node name="ReloadTimer" type="Timer" parent="RayCast2D"]
+
+[connection signal="timeout" from="RayCast2D/ReloadTimer" to="RayCast2D" method="_on_reload_timer_timeout"]

@@ -1,5 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://bh1w0ho7ry2kq"]
 
+
 [ext_resource type="Script" uid="uid://clycbp5oqw18" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dm60w5cv4dvpi" path="res://sprites/Archer/High Attack.png" id="2_g2els"]
 
@@ -102,7 +103,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(28.5, 26.5)
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(0, 2)
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -113,3 +118,15 @@ frame_progress = 0.9874358
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -15)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.0000005, -2.0000002)
+scale = Vector2(0.2890625, 0.234375)
+texture = ExtResource("1_3vyb7")
+
+[node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+position = Vector2(-3.4594727, 25.600098)
+position_smoothing_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_g2els")

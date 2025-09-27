@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
-var speed = 100
+@export var speed = 400
+@export var max_health: int = 100
+var current_health: int = max_health
+
+const GRAVE = preload("res://scenes/grave.tscn")
 
 var player_state 
 #var bow_equiped = true
@@ -31,5 +35,22 @@ func _physics_process(delta):
 		bow_reload = true
  	
 	#play_anim(direction)
+
+func take_damage(amount: int):
+	current_health -= amount
+	print("Player health: ", current_health, "/", max_health)
 	
+	if current_health <= 0:
+		die()
+
+func die():
+	print("Player died!")
 	
+	# Spawn grave at player's position
+	var grave = GRAVE.instantiate()
+	get_parent().add_child(grave)
+	grave.global_position = global_position
+	
+	# Small delay before restarting scene
+	await get_tree().create_timer(0.5).timeout
+	get_tree().reload_current_scene()
