@@ -1,28 +1,47 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlu4unv1vp7w4"]
+[gd_scene load_steps=6 format=3 uid="uid://dlu4unv1vp7w4"]
 
-[ext_resource type="Script" path="res://scripts/arrow.gd" id="1_23jat"]
-[ext_resource type="Texture2D" uid="uid://i5totv5mnkqh" path="res://icon.svg" id="1_umosx"]
+[ext_resource type="Script" uid="uid://5ew0qm0i5a3p" path="res://scripts/arrow.gd" id="1_23jat"]
+[ext_resource type="Texture2D" uid="uid://ccv8bvdgngdqj" path="res://sprites/arrow.png" id="2_23jat"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23jat"]
-radius = 2.0
-height = 42.0
+radius = 2.5
+height = 11.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8ifc"]
+atlas = ExtResource("2_23jat")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ckq1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8ifc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Arrow" type="Area2D" groups=["Arrow"]]
+position = Vector2(18, -1)
 script = ExtResource("1_23jat")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(-0.081046104, -4.7253934e-08)
-rotation = 1.5707964
-scale = Vector2(0.01815766, 0.31631765)
-texture = ExtResource("1_umosx")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-11, 0)
 rotation = 1.5707964
+scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_23jat")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(52, 22)
-rect = Rect2(-55, -25, 6, 6)
+position = Vector2(81, 44)
+scale = Vector2(2, 2)
+rect = Rect2(-50.5, -24.5, 1.5, 5.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-18, 0.99999905)
+rotation = 2.3561945
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_7ckq1")
+offset = Vector2(2, 2)
 
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

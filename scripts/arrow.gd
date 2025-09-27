@@ -1,6 +1,6 @@
 extends Area2D
 
-var speed = 500
+var speed = 200 
 
 func _ready() -> void:
 	set_as_top_level(true)

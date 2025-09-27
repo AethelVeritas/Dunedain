@@ -441,7 +441,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"se-shoot",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -472,7 +472,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"sw-shoot",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -486,24 +486,24 @@ animations = [{
 "speed": 3.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_t4otl")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j2b1d")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_cs1tg")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_2dvfe")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_giy8y")
 }],
-"loop": true,
+"loop": false,
 "name": &"w-shoot",
-"speed": 3.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -526,11 +526,10 @@ scale = Vector2(1.99, 1.99)
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.5, 0)
+position = Vector2(0, -2)
 scale = Vector2(0.90625, 1)
 sprite_frames = SubResource("SpriteFrames_a8ls1")
-animation = &"w-walk"
-frame_progress = 0.04029124
+animation = &"w-shoot"
 
 [node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
 zoom = Vector2(1.99, 1.99)
@@ -540,7 +539,7 @@ limit_bottom = 120
 position_smoothing_enabled = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -15)
+position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
