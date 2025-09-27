@@ -46,10 +46,8 @@ func take_damage(amount: int):
 func die():
 	print("Player died!")
 	
-	# Spawn grave at player's position
-	var grave = GRAVE.instantiate()
-	get_parent().add_child(grave)
-	grave.global_position = global_position
+	# Save grave position to game manager
+	GameManager.add_grave_position(global_position)
 	
 	# Small delay before restarting scene
 	await get_tree().create_timer(0.5).timeout

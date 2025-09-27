@@ -7,13 +7,14 @@
 size = Vector2(127.5, 29)
 
 [node name="Bullet" type="Area2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_y25gk")
 damage = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3.5527137e-15, 1.1368684e-13)
-scale = Vector2(1.015625, 0.23437497)
+scale = Vector2(0.5, 0.125)
 texture = ExtResource("1_mkf8s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_y25gk")

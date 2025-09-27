@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkqk7f4s0wbqy"]
+[gd_scene load_steps=4 format=3 uid="uid://dkqk7f4s0wbqy"]
 
 [ext_resource type="Texture2D" uid="uid://dloqaw31bp6ln" path="res://assets/turret_FACE.png" id="1_el7wl"]
 [ext_resource type="Script" uid="uid://c04b3f0vvjflr" path="res://scripts/turret.gd" id="2_485p4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_turret"]
+radius = 32.0
 
 [node name="Turret" type="Node2D"]
 
@@ -15,4 +18,10 @@ script = ExtResource("2_485p4")
 
 [node name="ReloadTimer" type="Timer" parent="RayCast2D"]
 
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CircleShape2D_turret")
+
 [connection signal="timeout" from="RayCast2D/ReloadTimer" to="RayCast2D" method="_on_reload_timer_timeout"]
+[connection signal="area_entered" from="HitArea" to="RayCast2D" method="_on_hit_area_entered"]
