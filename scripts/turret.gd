@@ -23,7 +23,7 @@ func _physics_process(delta):
 		
 		# Check if any part of the player is visible
 		if has_line_of_sight_to_player():
-			gun_sprite.rotation = angle_to_target
+			#gun_sprite.rotation = angle_to_target
 			if reload_timer.is_stopped():
 				shoot()
 

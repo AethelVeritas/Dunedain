@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var speed = 400
-@export var max_arrows = 10 # Maximum arrows the player can carry
-var max_health = 100
+@export var max_arrows = 100 # Maximum arrows the player can carry
+var max_health = 1000
 var current_health: int = max_health
 var arrow_count: int = max_arrows # Current arrow count
 
