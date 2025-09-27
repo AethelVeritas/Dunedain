@@ -4,16 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://i5totv5mnkqh" path="res://icon.svg" id="1_umosx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_23jat"]
-height = 108.0
+radius = 2.0
+height = 42.0
 
 [node name="Arrow" type="Area2D" groups=["Arrow"]]
 script = ExtResource("1_23jat")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(0.99999994, 0)
+position = Vector2(-0.081046104, -4.7253934e-08)
 rotation = 1.5707964
-scale = Vector2(0.0859375, 0.8125)
+scale = Vector2(0.01815766, 0.31631765)
 texture = ExtResource("1_umosx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -21,7 +22,7 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_23jat")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(52, 23)
-rect = Rect2(-60, -36, 16, 27)
+position = Vector2(52, 22)
+rect = Rect2(-55, -25, 6, 6)
 
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

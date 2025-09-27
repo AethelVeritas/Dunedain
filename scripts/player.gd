@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 @export var speed = 400
+@export var max_health: int = 1000
 @export var max_arrows = 100 # Maximum arrows the player can carry
-var max_health = 1000
 var current_health: int = max_health
 var arrow_count: int = max_arrows # Current arrow count
 
@@ -28,7 +28,6 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("left_mouse") and bow_reload:
 		if arrow_count > 0:
-			#bow_equiped = false
 			var arrow_instance = arrow.instantiate()
 			arrow_instance.rotation = $Marker2D.rotation
 			arrow_instance.global_position = $Marker2D.global_position
@@ -39,8 +38,30 @@ func _physics_process(delta):
 			bow_reload = true
 		else:
 			print("Out of arrows!") # Feedback when no arrows available
- 	
-	#play_anim(direction)
+	
+	play_anim(direction)
+
+func play_anim(dir: Vector2):
+	# GPT-generated, so you don't have to type out the whole "$AnimatedSprite2D.play("n-walk") for example
+	if player_state == "idle":
+		$AnimatedSprite2D.play("idle")
+	elif player_state == "walking":
+		var d = Vector2(round(dir.x), round(dir.y))
+		var anim_name = ""
+
+		if d.y == -1:
+			anim_name += "n"
+		elif d.y == 1:
+			anim_name += "s"
+		
+		if d.x == -1:
+			anim_name += "w"
+		elif d.x == 1:
+			anim_name += "e"
+		
+		if anim_name != "":
+			anim_name += "-walk"
+			$AnimatedSprite2D.play(anim_name)
 
 func take_damage(amount: int):
 	current_health -= amount
@@ -63,7 +84,6 @@ func _ready():
 	# Reset stats when player spawns
 	current_health = max_health
 	arrow_count = max_arrows
-
 
 func add_arrows(amount: int):
 	arrow_count += amount		
