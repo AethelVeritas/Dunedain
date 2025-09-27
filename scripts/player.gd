@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 400
+@export var speed = 250
 @export var max_health: int = 100
 var current_health: int = max_health
 
@@ -33,8 +33,31 @@ func _physics_process(delta):
 		add_child(arrow_instance)
 		await get_tree().create_timer(0.4).timeout
 		bow_reload = true
- 	
-	#play_anim(direction)
+	play_anim(direction)
+
+func play_anim(dir: Vector2):
+	#GPT generated, so you don't have to type out the whole "$AnimatedSprite2D.play("n-walk") for example
+	if player_state == "idle":
+		$AnimatedSprite2D.play("idle")
+	elif player_state == "walking":
+		var d = Vector2(round(dir.x), round(dir.y))
+		var anim_name = ""
+
+		if d.y == -1:
+			anim_name += "n"
+		elif d.y == 1:
+			anim_name += "s"
+		
+		if d.x == -1:
+			anim_name += "w"
+		elif d.x == 1:
+			anim_name += "e"
+		
+		if anim_name != "":
+			anim_name += "-walk"
+			$AnimatedSprite2D.play(anim_name)
+
+
 
 func take_damage(amount: int):
 	current_health -= amount
