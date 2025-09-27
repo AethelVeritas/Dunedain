@@ -109,4 +109,5 @@ func take_damage(amount: int):
 func die():
 	print("Turret destroyed!")
 	GameManager.add_grave_position(global_position)
-	get_parent().queue_free()  
+	GameManager.add_arrow_pickup(global_position)
+	get_parent().queue_free()
