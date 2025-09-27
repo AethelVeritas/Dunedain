@@ -7,6 +7,10 @@ var target: Node2D = null
 @onready var ray_cast: RayCast2D = $"."
 @onready var gun_sprite: Sprite2D = $"../Sprite2D"
 
+# Health system
+@export var max_health: int = 50
+var current_health: int = max_health
+
 #const player = preload("uid://bh1w0ho7ry2kq")
 func _ready():
 	await get_tree().process_frame
@@ -23,6 +27,7 @@ func _physics_process(delta):
 			if reload_timer.is_stopped():
 				shoot()
 
+# New function to check line of sight to any part of the player
 func has_line_of_sight_to_player() -> bool:
 	# Get the player's collision shape
 	var player_collision = target.get_node("CollisionShape2D")
@@ -60,7 +65,6 @@ func has_line_of_sight_to_player() -> bool:
 	return false
 
 func shoot():
-	print("PEW")
 	ray_cast.enabled = false
 	
 	if BULLET:
@@ -88,3 +92,21 @@ func _on_reload_timer_timeout() -> void:
 	print("reload timeout")
 	reload_timer.stop()
 	ray_cast.enabled = true
+
+# Collision detection for arrow hits
+func _on_hit_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Arrow"):
+		take_damage(25)  # Arrows deal 25 damage
+		area.queue_free()  # Remove the arrow after hitting
+
+func take_damage(amount: int):
+	current_health -= amount
+	print("Turret health: ", current_health, "/", max_health)
+	
+	if current_health <= 0:
+		die()
+
+func die():
+	print("Turret destroyed!")
+	GameManager.add_grave_position(global_position)
+	get_parent().queue_free()  

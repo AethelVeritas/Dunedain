@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 400
-@export var max_health: int = 100
+var max_health = 100
 var current_health: int = max_health
 
 const GRAVE = preload("res://scenes/grave.tscn")
