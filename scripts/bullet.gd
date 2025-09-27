@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed: float = 300.0
+@export var speed: float = 800.0
 @export var damage: int = 1
 @export var lifetime: float = 3.0
 
@@ -26,8 +26,9 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body.is_in_group("Player"):
 		# Deal damage to player
+		if body.has_method("take_damage"):
+			body.take_damage(damage)
 		print("Player hit! Damage: ", damage)
-		# You can add player health reduction here
 		queue_free()
 	elif body.is_in_group("Wall") or body.is_in_group("Obstacle"):
 		# Hit a wall or obstacle

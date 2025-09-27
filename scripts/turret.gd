@@ -8,7 +8,6 @@ var target: Node2D = null
 @onready var gun_sprite: Sprite2D = $"../Sprite2D"
 
 const player = preload("uid://bh1w0ho7ry2kq")
-#var playerr = get_tree().get_first_node_in_group("Player")
 func _ready():
 	await get_tree().process_frame
 	target = find_target()
@@ -19,9 +18,7 @@ func _physics_process(delta):
 		var angle_to_target = global_position.angle_to_point(target.global_position)
 		ray_cast.look_at(target.global_position)
 		if ray_cast.is_colliding() and ray_cast.get_collider().is_in_group("Player"):
-			#print("colliding")
 			gun_sprite.rotation = angle_to_target
-			print("is stopped reload timer", reload_timer.is_stopped())
 			if reload_timer.is_stopped():
 				shoot()
 
@@ -42,7 +39,6 @@ func shoot():
 func find_target():
 	var new_target: Node2D = null
 	
-	# Look for the player node specifically
 	var player = get_tree().get_first_node_in_group("Player")
 	print(player)
 	if player != null:

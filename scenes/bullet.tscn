@@ -8,6 +8,7 @@ size = Vector2(127.5, 29)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_y25gk")
+damage = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3.5527137e-15, 1.1368684e-13)
