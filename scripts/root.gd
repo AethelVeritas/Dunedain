@@ -32,6 +32,9 @@ func _on_end_screen_area_body_entered(body):
 		show_level_complete_screen()
 
 func show_level_complete_screen():
+	# Pause the game to prevent player death during level complete
+	get_tree().paused = true
+
 	var end_screen = END_GAME_SCREEN.instantiate()
 	add_child(end_screen)
 	end_screen.show_level_complete()

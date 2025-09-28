@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://d1qeq68ycsqxh"]
+[gd_scene load_steps=18 format=4 uid="uid://d1qeq68ycsqxh"]
 
 [ext_resource type="PackedScene" uid="uid://bh1w0ho7ry2kq" path="res://scenes/player.tscn" id="1_j5px3"]
 [ext_resource type="Script" uid="uid://dhpfdag4p3ano" path="res://scripts/root.gd" id="1_sqa0i"]
@@ -999,6 +999,10 @@ b = Vector2(117, 0)
 a = Vector2(3, -759)
 b = Vector2(10, 297)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7pvxh"]
+a = Vector2(-2, -791)
+b = Vector2(-13, 9)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfjl"]
 size = Vector2(325, 145)
 
@@ -1053,8 +1057,8 @@ position = Vector2(245, -2)
 shape = SubResource("SegmentShape2D_3hfy5")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-357, -35)
-shape = SubResource("SegmentShape2D_3hfy5")
+position = Vector2(-287, 4)
+shape = SubResource("SegmentShape2D_7pvxh")
 
 [node name="EndScreenArea" type="Area2D" parent="."]
 position = Vector2(0, -50)

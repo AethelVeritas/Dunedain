@@ -11,7 +11,7 @@ func _ready():
 
 func show_end_screen(graves_count: int, lives_lost: int):
 	# Update stats
-	graves_label.text = "Lives Saccrificed: " + str(graves_count)
+	graves_label.text = "Lives Sacrificed: " + str(graves_count)
 	#lives_used_label.text = "Lives Lost: " + str(lives_lost)
 	
 	# Show the screen
@@ -19,6 +19,9 @@ func show_end_screen(graves_count: int, lives_lost: int):
 	animation_player.play("fade_in")
 
 func _on_restart_button_pressed():
+	# Unpause the game before transitioning
+	get_tree().paused = false
+
 	# Reset all game state
 	GameManager.reset_lives()
 	GameManager.clear_graves()
@@ -42,5 +45,8 @@ func show_level_complete():
 	animation_player.play("fade_in")
 
 func _on_quit_button_pressed():
+	# Unpause the game before quitting
+	get_tree().paused = false
+
 	# Quit the game
 	get_tree().quit()
