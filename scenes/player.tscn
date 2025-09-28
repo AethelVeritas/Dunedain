@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bh1w0ho7ry2kq"]
+[gd_scene load_steps=66 format=3 uid="uid://bh1w0ho7ry2kq"]
 
 [ext_resource type="Script" uid="uid://clycbp5oqw18" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bge6alj2sagkr" path="res://sprites/Puny-Characters/Archer-Green.png" id="2_g2els"]
@@ -541,9 +541,10 @@ animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
 zoom = Vector2(1.99, 1.99)
-limit_left = -352
-limit_right = 248
-limit_bottom = 120
+limit_left = -302
+limit_top = -9999989
+limit_right = 298
+limit_bottom = 131
 position_smoothing_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="AnimatedSprite2D/Camera2D"]
