@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://d1qeq68ycsqxh"]
+[gd_scene load_steps=15 format=4 uid="uid://d1qeq68ycsqxh"]
 
 [ext_resource type="PackedScene" uid="uid://bh1w0ho7ry2kq" path="res://scenes/player.tscn" id="1_j5px3"]
 [ext_resource type="Script" uid="uid://dhpfdag4p3ano" path="res://scripts/root.gd" id="1_sqa0i"]
 [ext_resource type="Texture2D" uid="uid://btcv8xwvke14a" path="res://sprites/terrain/survivalgame-trees.png" id="4_j287u"]
 [ext_resource type="PackedScene" uid="uid://dkqk7f4s0wbqy" path="res://scenes/turret.tscn" id="4_sqa0i"]
 [ext_resource type="Texture2D" uid="uid://cafnushewpbck" path="res://sprites/terrain/survivalgame-terrian-water.png" id="5_5sfjl"]
-[ext_resource type="PackedScene" uid="uid://cc2mu4hywto4x" path="res://scenes/testfield.tscn" id="5_jh1ax"]
+[ext_resource type="PackedScene" path="res://scenes/testfield.tscn" id="5_jh1ax"]
 [ext_resource type="Texture2D" uid="uid://d38b4nngiddu1" path="res://sprites/terrain/survivalgame-terrian-defult.png" id="5_kycxp"]
 [ext_resource type="Texture2D" uid="uid://jryjpagpsv20" path="res://sprites/terrain/survivalgame-terrian-cliffs.png" id="6_j287u"]
 [ext_resource type="PackedScene" uid="uid://cm7avbp2n4ulk" path="res://scenes/door.tscn" id="9_3hfy5"]
@@ -1013,14 +1013,18 @@ position = Vector2(-72, 40)
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_sqa0i")]
 position = Vector2(-35, -30)
 
-[node name="Turret3" parent="." instance=ExtResource("3_lrqlo")]
+[node name="Turret3" parent="." instance=ExtResource("4_sqa0i")]
 z_index = 1
 position = Vector2(23, 89)
+
+[node name="Node2D" parent="." instance=ExtResource("5_jh1ax")]
+z_index = -1
 
 [node name="Doors" type="Node" parent="."]
 
 [node name="Door_S" parent="Doors" instance=ExtResource("9_3hfy5")]
 position = Vector2(-72, 96)
+destination_level_tag = "root"
 destination_door_tag = "N"
 spawn_direction = "down"
 
