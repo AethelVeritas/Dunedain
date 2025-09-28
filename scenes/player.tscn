@@ -552,26 +552,26 @@ position_smoothing_enabled = true
 [node name="HealthBar" parent="AnimatedSprite2D/Camera2D/CanvasLayer" instance=ExtResource("3_qhqgy")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 916.0
-offset_top = 38.0
-offset_right = 1056.0
-offset_bottom = 58.0
+offset_left = 914.0
+offset_top = 12.0
+offset_right = 1054.0
+offset_bottom = 32.0
 
 [node name="ArrowCounter" parent="AnimatedSprite2D/Camera2D/CanvasLayer" instance=ExtResource("4_arrow")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 916.0
-offset_top = 58.0
-offset_right = 1036.0
-offset_bottom = 78.0
+offset_left = 925.0
+offset_top = 40.0
+offset_right = 1045.0
+offset_bottom = 60.0
 
 [node name="LivesDisplay" parent="AnimatedSprite2D/Camera2D/CanvasLayer" instance=ExtResource("5_lives")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 916.0
-offset_top = 78.0
-offset_right = 1036.0
-offset_bottom = 98.0
+offset_left = 922.0
+offset_top = 67.0
+offset_right = 1042.0
+offset_bottom = 87.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -2)
