@@ -1004,7 +1004,7 @@ tile_map_data = PackedByteArray("AAD+/wAAAwADAAEAAAD+////AwADAAEAAAD+//7/AwADAAE
 tile_set = SubResource("TileSet_7pvxh")
 
 [node name="Turret" parent="." instance=ExtResource("4_sqa0i")]
-position = Vector2(-288, -432)
+position = Vector2(-206, -346)
 
 [node name="Turret2" parent="." instance=ExtResource("4_sqa0i")]
 position = Vector2(128, -344)
@@ -1013,11 +1013,11 @@ position = Vector2(128, -344)
 position = Vector2(-72, 40)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_sqa0i")]
-position = Vector2(-35, -30)
+position = Vector2(-266, -608)
 
 [node name="Turret3" parent="." instance=ExtResource("4_sqa0i")]
 z_index = 1
-position = Vector2(23, 89)
+position = Vector2(54, -597)
 
 [node name="Doors" type="Node" parent="."]
 
