@@ -16,6 +16,7 @@ var game_over_screen_active: bool = false
 #var bow_equiped = true
 var bow_reload = true
 var arrow = preload("res://scenes/arrow.tscn")
+var initial_position: Vector2
 
 func _physics_process(delta):
 	# Block all controls when game over screen is active
@@ -158,7 +159,7 @@ func reset_player():
 	arrow_count = max_arrows
 	is_dead = false
 	game_over_screen_active = false
-	global_position = Vector2(0, 0) # Or whatever the spawn position should be
+	global_position = initial_position # Respawn at initial spawn point
 
 	# Update UI
 	if health_bar:
@@ -187,6 +188,9 @@ func game_over():
 	end_screen.show_end_screen(graves_count, lives_lost)
 
 func _ready():
+	# Store initial position for respawning
+	initial_position = global_position
+
 	# Reset stats when player spawns
 	current_health = max_health
 	arrow_count = max_arrows

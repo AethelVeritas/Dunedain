@@ -11,8 +11,8 @@ func _ready():
 
 func show_end_screen(graves_count: int, lives_lost: int):
 	# Update stats
-	graves_label.text = "Graves Created: " + str(graves_count)
-	lives_used_label.text = "Lives Lost: " + str(lives_lost)
+	graves_label.text = "Lives Saccrificed: " + str(graves_count)
+	#lives_used_label.text = "Lives Lost: " + str(lives_lost)
 	
 	# Show the screen
 	visible = true

@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://btcv8xwvke14a" path="res://sprites/terrain/survivalgame-trees.png" id="4_j287u"]
 [ext_resource type="PackedScene" uid="uid://dkqk7f4s0wbqy" path="res://scenes/turret.tscn" id="4_sqa0i"]
 [ext_resource type="Texture2D" uid="uid://cafnushewpbck" path="res://sprites/terrain/survivalgame-terrian-water.png" id="5_5sfjl"]
-[ext_resource type="PackedScene" path="res://scenes/testfield.tscn" id="5_jh1ax"]
 [ext_resource type="Texture2D" uid="uid://d38b4nngiddu1" path="res://sprites/terrain/survivalgame-terrian-defult.png" id="5_kycxp"]
 [ext_resource type="Texture2D" uid="uid://jryjpagpsv20" path="res://sprites/terrain/survivalgame-terrian-cliffs.png" id="6_j287u"]
 [ext_resource type="PackedScene" uid="uid://cm7avbp2n4ulk" path="res://scenes/door.tscn" id="9_3hfy5"]
@@ -988,6 +987,9 @@ sources/3 = SubResource("TileSetAtlasSource_y3xxt")
 sources/4 = SubResource("TileSetAtlasSource_xsp7o")
 sources/5 = SubResource("TileSetAtlasSource_l5cgh")
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5sfjl"]
+b = Vector2(117, 0)
+
 [node name="Root" type="Node2D"]
 script = ExtResource("1_sqa0i")
 
@@ -1017,18 +1019,21 @@ position = Vector2(-35, -30)
 z_index = 1
 position = Vector2(23, 89)
 
-[node name="Node2D" parent="." instance=ExtResource("5_jh1ax")]
-z_index = -1
-
 [node name="Doors" type="Node" parent="."]
 
 [node name="Door_S" parent="Doors" instance=ExtResource("9_3hfy5")]
-position = Vector2(-72, 96)
+position = Vector2(-73, 147)
 destination_level_tag = "root"
 destination_door_tag = "N"
 spawn_direction = "down"
 
 [node name="Spawn" parent="Doors/Door_S" index="1"]
 position = Vector2(0, -32)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-135, 118)
+shape = SubResource("SegmentShape2D_5sfjl")
 
 [editable path="Doors/Door_S"]
