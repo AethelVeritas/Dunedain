@@ -11,6 +11,7 @@ var arrow_count: int = max_arrows # Current arrow count
 @onready var lives_display: Control = $AnimatedSprite2D/Camera2D/CanvasLayer/LivesDisplay
 
 var player_state
+var is_dead: bool = false
 #var bow_equiped = true
 var bow_reload = true
 var arrow = preload("res://scenes/arrow.tscn")
@@ -109,13 +110,18 @@ func play_anim(dir: Vector2):
 			$AnimatedSprite2D.play(anim_name)
 
 func take_damage(amount: int):
+	# Don't take damage if already dead
+	if is_dead:
+		return
+
 	current_health -= amount
 	print("Player health: ", current_health, "/", max_health)
 
 	if health_bar:
 		health_bar.update_health(current_health, max_health)
-	
+
 	if current_health <= 0:
+		is_dead = true
 		$AnimatedSprite2D.play("death")
 		die()
 
@@ -145,6 +151,7 @@ func reset_player():
 	# Reset player health and position
 	current_health = max_health
 	arrow_count = max_arrows
+	is_dead = false
 	global_position = Vector2(0, 0) # Or whatever the spawn position should be
 
 	# Update UI
