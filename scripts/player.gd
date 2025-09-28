@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 200
 @export var max_health: int = 100
-@export var max_arrows = 100
+@export var max_arrows = 10
 
 var current_health: int = max_health
 var arrow_count: int = max_arrows # Current arrow count
@@ -116,6 +116,7 @@ func take_damage(amount: int):
 		health_bar.update_health(current_health, max_health)
 	
 	if current_health <= 0:
+		$AnimatedSprite2D.play("death")
 		die()
 
 func die():

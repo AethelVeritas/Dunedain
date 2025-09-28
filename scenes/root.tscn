@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://btcv8xwvke14a" path="res://sprites/terrain/survivalgame-trees.png" id="4_j287u"]
 [ext_resource type="PackedScene" uid="uid://dkqk7f4s0wbqy" path="res://scenes/turret.tscn" id="4_sqa0i"]
 [ext_resource type="Texture2D" uid="uid://cafnushewpbck" path="res://sprites/terrain/survivalgame-terrian-water.png" id="5_5sfjl"]
-[ext_resource type="PackedScene" uid="uid://cc2mu4hywto4x" path="res://scenes/testfield.tscn" id="5_jh1ax"]
+[ext_resource type="PackedScene" path="res://scenes/testfield.tscn" id="5_jh1ax"]
 [ext_resource type="Texture2D" uid="uid://d38b4nngiddu1" path="res://sprites/terrain/survivalgame-terrian-defult.png" id="5_kycxp"]
 [ext_resource type="Texture2D" uid="uid://jryjpagpsv20" path="res://sprites/terrain/survivalgame-terrian-cliffs.png" id="6_j287u"]
 [ext_resource type="PackedScene" uid="uid://cm7avbp2n4ulk" path="res://scenes/door.tscn" id="9_3hfy5"]
@@ -1024,6 +1024,7 @@ z_index = -1
 
 [node name="Door_S" parent="Doors" instance=ExtResource("9_3hfy5")]
 position = Vector2(-72, 96)
+destination_level_tag = "root"
 destination_door_tag = "N"
 spawn_direction = "down"
 
