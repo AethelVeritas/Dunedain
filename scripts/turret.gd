@@ -16,6 +16,12 @@ func _ready():
 	await get_tree().process_frame
 	target = find_target()
 
+	# Check if this turret has been defeated before
+	if GameManager.is_turret_defeated(global_position):
+		# This turret was already defeated, remove it
+		get_parent().queue_free()
+		return
+
 func _physics_process(delta):
 	if target != null:
 		var angle_to_target = global_position.angle_to_point(target.global_position)
@@ -43,10 +49,10 @@ func has_line_of_sight_to_player() -> bool:
 	
 	# Define the four corners of the player's collision rectangle
 	var corners = [
-		target.global_position + collision_offset + Vector2(-extents.x, -extents.y),  # Top-left
-		target.global_position + collision_offset + Vector2(extents.x, -extents.y),   # Top-right
-		target.global_position + collision_offset + Vector2(-extents.x, extents.y),   # Bottom-left
-		target.global_position + collision_offset + Vector2(extents.x, extents.y)     # Bottom-right
+		target.global_position + collision_offset + Vector2(-extents.x, -extents.y), # Top-left
+		target.global_position + collision_offset + Vector2(extents.x, -extents.y), # Top-right
+		target.global_position + collision_offset + Vector2(-extents.x, extents.y), # Bottom-left
+		target.global_position + collision_offset + Vector2(extents.x, extents.y) # Bottom-right
 	]
 	
 	# Check ray cast to each corner
@@ -96,8 +102,8 @@ func _on_reload_timer_timeout() -> void:
 # Collision detection for arrow hits
 func _on_hit_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Arrow"):
-		take_damage(25)  # Arrows deal 25 damage
-		area.queue_free()  # Remove the arrow after hitting
+		take_damage(25) # Arrows deal 25 damage
+		area.queue_free() # Remove the arrow after hitting
 
 func take_damage(amount: int):
 	current_health -= amount
@@ -110,4 +116,5 @@ func die():
 	print("Turret destroyed!")
 	GameManager.add_grave_position(global_position)
 	GameManager.add_arrow_pickup(global_position)
+	GameManager.add_defeated_turret(global_position)
 	get_parent().queue_free()
