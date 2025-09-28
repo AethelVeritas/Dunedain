@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://gmtd5f1n0lf3"]
+
+[ext_resource type="Texture2D" uid="uid://l2x7agsoehyk" path="res://sprites/Speech balloons_v1/Speech balloons/yellow/7.png" id="1_05rmk"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 46.0
+offset_bottom = 41.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+rotation = 1.5707964
+texture = ExtResource("1_05rmk")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 2.000002
+offset_top = 37.0
+offset_right = 67.0
+offset_bottom = 58.0
+rotation = -1.5707964
+scale = Vector2(0.3, 0.3)
+text = "Name:"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 8.000002
+offset_top = 36.0
+offset_right = 48.0
+offset_bottom = 76.0
+rotation = -1.5707964
+scale = Vector2(0.2, 0.2)
+text = "Text:"

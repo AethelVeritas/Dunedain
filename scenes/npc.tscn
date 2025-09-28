@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://ot7o7oasi522"]
+
+[ext_resource type="Texture2D" uid="uid://djs1ithydx5ti" path="res://sprites/Puny-Characters/Human-Worker-Cyan.png" id="1_nh2m4"]
+[ext_resource type="Script" uid="uid://ldwtyjf1tnc8" path="res://scenes/NPC.gd" id="2_abqhh"]
+[ext_resource type="PackedScene" uid="uid://gmtd5f1n0lf3" path="res://dialog/dialogue.tscn" id="3_rv78h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abqhh"]
+atlas = ExtResource("1_nh2m4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rv78h"]
+atlas = ExtResource("1_nh2m4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7n8xq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abqhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rv78h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wlns"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tl2vt"]
+radius = 22.090721
+
+[node name="NPC" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7n8xq")
+frame_progress = 0.97055084
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_4wlns")
+
+[node name="chat_detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
+shape = SubResource("CircleShape2D_tl2vt")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("2_abqhh")
+
+[node name="Dialogue" parent="." instance=ExtResource("3_rv78h")]
+offset_left = 18.0
+offset_top = -47.0
+offset_right = 58.0
+offset_bottom = -7.0
