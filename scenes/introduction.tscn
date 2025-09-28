@@ -998,14 +998,14 @@ tile_map_data = PackedByteArray("AAD5/wIABAABAAEAAAD6/wIABAABAAEAAAD7/wIABAABAAE
 tile_set = SubResource("TileSet_gply2")
 
 [node name="Player" parent="." instance=ExtResource("5_xofpe")]
-position = Vector2(-60, -65)
+position = Vector2(-64, -24.000008)
 
 [node name="Doors" type="Node" parent="."]
 
 [node name="Door_N" parent="Doors" instance=ExtResource("6_e7oap")]
 position = Vector2(-72, -520)
-destination_level = "root"
-destination_door_tag = "S"
+destination_level_tag = "root"
+destination_door_tag = "N"
 
 [node name="Spawn" parent="Doors/Door_N" index="1"]
 position = Vector2(0, 40)

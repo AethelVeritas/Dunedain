@@ -2,12 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bh1w0ho7ry2kq" path="res://scenes/player.tscn" id="1_j5px3"]
 [ext_resource type="Script" uid="uid://dhpfdag4p3ano" path="res://scripts/root.gd" id="1_sqa0i"]
-[ext_resource type="PackedScene" uid="uid://dkqk7f4s0wbqy" path="res://scenes/turret.tscn" id="3_lrqlo"]
 [ext_resource type="Texture2D" uid="uid://btcv8xwvke14a" path="res://sprites/terrain/survivalgame-trees.png" id="4_j287u"]
-[ext_resource type="PackedScene" uid="uid://dpd56u8fp61ka" path="res://scenes/arrowtest.tscn" id="4_sqa0i"]
+[ext_resource type="PackedScene" uid="uid://dkqk7f4s0wbqy" path="res://scenes/turret.tscn" id="4_sqa0i"]
 [ext_resource type="Texture2D" uid="uid://cafnushewpbck" path="res://sprites/terrain/survivalgame-terrian-water.png" id="5_5sfjl"]
-[ext_resource type="Texture2D" uid="uid://d38b4nngiddu1" path="res://sprites/terrain/survivalgame-terrian-defult.png" id="5_kycxp"]
 [ext_resource type="PackedScene" uid="uid://cc2mu4hywto4x" path="res://scenes/testfield.tscn" id="5_jh1ax"]
+[ext_resource type="Texture2D" uid="uid://d38b4nngiddu1" path="res://sprites/terrain/survivalgame-terrian-defult.png" id="5_kycxp"]
 [ext_resource type="Texture2D" uid="uid://jryjpagpsv20" path="res://sprites/terrain/survivalgame-terrian-cliffs.png" id="6_j287u"]
 [ext_resource type="PackedScene" uid="uid://cm7avbp2n4ulk" path="res://scenes/door.tscn" id="9_3hfy5"]
 
@@ -1002,19 +1001,19 @@ position = Vector2(8, 0)
 tile_map_data = PackedByteArray("AAD+/wAAAwADAAEAAAD+////AwADAAEAAAD+//7/AwADAAEAAAD+//3/AwADAAEAAAD+//z/AwADAAEAAAD9//z/AwADAAEAAAD9//3/AwADAAEAAAD9//7/AwADAAEAAAD9/wAAAwADAAEAAAD8//3/AwAAAAAAAAD8//z/AwAAAAAAAAD7//z/AwAAAAAAAAD7//3/AwABAAEAAAD6//3/AwABAAEAAAD6//z/AwAAAAAAAAD5//z/AwAAAAAAAAD5//3/AwAAAAAAAAADAP//AwAAAAAAAAADAP7/AwAAAAAAAAACAP3/AwAAAAAAAAACAPz/AwAAAAAAAAACAPv/AwAAAAAAAAABAPz/AwAAAAAAAAABAP3/AwACAAIAAAABAP7/AwAAAAAAAAACAP7/AwAAAAAAAAD///7/AwAAAAAAAAD///3/AwAAAAAAAAAAAP7/AwABAAEAAAAAAP3/AwAAAAAAAAAAAPz/AwACAAIAAAABAPv/AwACAAIAAAAAAPv/AwAAAAAAAAD///v/AwAAAAAAAAD+//v/AwADAAEAAAD9//v/AwADAAEAAAD8//v/AwAAAAAAAAD7//v/AwAAAAAAAAD6//v/AwAAAAAAAAD5//v/AwAAAAAAAAD///z/AwAAAAAAAAD5//7/AwAAAAAAAAD6//7/AwAAAAAAAAD7//7/AwAAAAAAAAD8//7/AwAAAAAAAAD5/wIABAABAAEAAAD6/wIABAABAAEAAAD7/wIABAABAAEAAAD//wEABAAAAAAAAAD//wIABAAAAAEAAAAAAAEABAABAAAAAAAAAAIABAABAAEAAAABAAEABAABAAAAAAABAAIABAABAAEAAAACAAEABAAEAAAAAAACAAIABAAEAAEAAAD9////AwADAAEAAAD4/wIABAABAAEAAAD3/wIABAABAAEAAAADAAIABAAEAAEAAAAEAAIABAAEAAEAAAAFAAIABAAEAAEAAAAFAAEABAAFAAAAAAAEAAEABAAEAAAAAAADAAEABAAEAAAAAAD3/wEABAABAAEAAAD4/wEABAABAAEAAAD5/wEABAABAAEAAAD6/wEABAABAAEAAAD7/wEABAABAAEAAAD8/wIABAACAAEAAAD8/wEABAACAAEAAAD3/wAABAAAAAAAAAD4/wAABAABAAAAAAD5/wAABAABAAAAAAD6/wAABAABAAAAAAD7/wAABAABAAAAAAD8/wAABAACAAAAAAD3////BAACAAIAAAD3//7/BAACAAEAAAD3//3/BAAFAAAAAAAFAP3/BAAJAAIAAAAFAPz/BAAJAAEAAAAFAPv/BAAJAAEAAAAFAPr/BAAJAAAAAAA=")
 tile_set = SubResource("TileSet_7pvxh")
 
-[node name="Turret" parent="." instance=ExtResource("3_lrqlo")]
+[node name="Turret" parent="." instance=ExtResource("4_sqa0i")]
 position = Vector2(-288, -432)
 
-[node name="Turret2" parent="." instance=ExtResource("3_lrqlo")]
+[node name="Turret2" parent="." instance=ExtResource("4_sqa0i")]
 position = Vector2(128, -344)
 
 [node name="Player" parent="." instance=ExtResource("1_j5px3")]
-position = Vector2(-7, 33)
+position = Vector2(-72, 40)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_sqa0i")]
 position = Vector2(-35, -30)
 
-[node name="Turret3" parent="." instance=ExtResource("3_lrqlo")]
+[node name="Turret3" parent="." instance=ExtResource("4_sqa0i")]
 z_index = 1
 position = Vector2(23, 89)
 
@@ -1024,12 +1023,11 @@ z_index = -1
 [node name="Doors" type="Node" parent="."]
 
 [node name="Door_S" parent="Doors" instance=ExtResource("9_3hfy5")]
-position = Vector2(-72, 88)
-destination_level = "introduction"
+position = Vector2(-72, 96)
 destination_door_tag = "N"
 spawn_direction = "down"
 
 [node name="Spawn" parent="Doors/Door_S" index="1"]
-position = Vector2(0, -56)
+position = Vector2(0, -32)
 
 [editable path="Doors/Door_S"]
