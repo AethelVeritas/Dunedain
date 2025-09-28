@@ -35,10 +35,10 @@ func show_level_complete():
 	# Update the title and labels for level completion
 	$Panel/VBoxContainer/TitleLabel.text = "LEVEL COMPLETE!"
 	$Panel/VBoxContainer/StatsLabel.text = "You've survived level one"
-	$Panel/VBoxContainer/GravesLabel.text = "and"
-	$Panel/VBoxContainer/LivesUsedLabel.text = "more will come later..."
-	$Panel/VBoxContainer/ButtonsContainer/RestartButton.text = "Continue"
-	$Panel/VBoxContainer/ButtonsContainer/QuitButton.text = "Main Menu"
+	$Panel/VBoxContainer/GravesLabel.text = "more to come..."
+	$Panel/VBoxContainer/LivesUsedLabel.text = ""
+	$Panel/VBoxContainer/ButtonsContainer/RestartButton.text = "Restart"
+	$Panel/VBoxContainer/ButtonsContainer/QuitButton.text = "Quit"
 
 	# Show the screen
 	visible = true
