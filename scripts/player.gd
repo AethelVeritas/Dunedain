@@ -2,11 +2,12 @@ extends CharacterBody2D
 
 @export var speed = 200
 @export var max_health: int = 100
-@export var max_arrows = 100 
+@export var max_arrows = 100
 
 var current_health: int = max_health
 var arrow_count: int = max_arrows # Current arrow count
 @onready var health_bar: Control = $AnimatedSprite2D/Camera2D/CanvasLayer/HealthBar
+@onready var arrow_counter: Control = $AnimatedSprite2D/Camera2D/CanvasLayer/ArrowCounter
 
 var player_state
 #var bow_equiped = true
@@ -40,7 +41,7 @@ func _physics_process(delta):
 		play_shoot_anim(mouse_loc_from_player)
 
 		# Wait for animation timing
-		await get_tree().create_timer(0.4).timeout  # <-- full shoot anim duration
+		await get_tree().create_timer(0.4).timeout # <-- full shoot anim duration
 
 		# Spawn arrow mid-animation (adjust timing if needed)
 		var arrow_instance = arrow.instantiate()
@@ -49,6 +50,8 @@ func _physics_process(delta):
 		add_child(arrow_instance)
 		arrow_count -= 1
 		print("Arrows remaining: ", arrow_count)
+		if arrow_counter:
+			arrow_counter.update_arrows(arrow_count)
 
 		# Resume movement state + animations
 		if direction == Vector2.ZERO:
@@ -130,7 +133,11 @@ func _ready():
 	arrow_count = max_arrows
 	if health_bar:
 		health_bar.update_health(current_health, max_health)
+	if arrow_counter:
+		arrow_counter.update_arrows(arrow_count)
 
 func add_arrows(amount: int):
-	arrow_count += amount		
+	arrow_count += amount
 	print("Arrows remaining: ", arrow_count)
+	if arrow_counter:
+		arrow_counter.update_arrows(arrow_count)

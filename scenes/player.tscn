@@ -1,8 +1,9 @@
-[gd_scene load_steps=64 format=3 uid="uid://bh1w0ho7ry2kq"]
+[gd_scene load_steps=65 format=3 uid="uid://bh1w0ho7ry2kq"]
 
 [ext_resource type="Script" uid="uid://clycbp5oqw18" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bge6alj2sagkr" path="res://sprites/Puny-Characters/Archer-Green.png" id="2_g2els"]
 [ext_resource type="PackedScene" path="res://scenes/health_bar.tscn" id="3_qhqgy"]
+[ext_resource type="PackedScene" path="res://scenes/arrow_counter.tscn" id="4_arrow"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -548,6 +549,14 @@ offset_left = 916.0
 offset_top = 38.0
 offset_right = 1056.0
 offset_bottom = 58.0
+
+[node name="ArrowCounter" parent="AnimatedSprite2D/Camera2D/CanvasLayer" instance=ExtResource("4_arrow")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 916.0
+offset_top = 58.0
+offset_right = 1036.0
+offset_bottom = 78.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -2)
