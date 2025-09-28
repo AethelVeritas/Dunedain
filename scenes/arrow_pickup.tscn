@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://ccv8bvdgngdqj" path="res://sprites/arrow.png" id="2_qsx5o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pickup"]
-radius = 40.0
+radius = 28.071337
 
 [node name="ArrowPickup" type="Area2D"]
 script = ExtResource("1_arrow_pickup")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_pickup")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -21,6 +22,6 @@ offset_bottom = 20.0
 color = Color(0.2, 0.8, 0.2, 0.3)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-16, -15)
-scale = Vector2(4.59375, 4.03125)
+position = Vector2(-8, -7.000002)
+scale = Vector2(2.3828125, 2.0859375)
 texture = ExtResource("2_qsx5o")

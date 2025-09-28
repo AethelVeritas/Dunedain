@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://d1qeq68ycsqxh"]
+[gd_scene load_steps=16 format=4 uid="uid://d1qeq68ycsqxh"]
 
 [ext_resource type="PackedScene" uid="uid://bh1w0ho7ry2kq" path="res://scenes/player.tscn" id="1_j5px3"]
 [ext_resource type="Script" uid="uid://dhpfdag4p3ano" path="res://scripts/root.gd" id="1_sqa0i"]
@@ -995,6 +995,10 @@ sources/5 = SubResource("TileSetAtlasSource_l5cgh")
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5sfjl"]
 b = Vector2(117, 0)
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3hfy5"]
+a = Vector2(3, -759)
+b = Vector2(10, 297)
+
 [node name="Root" type="Node2D"]
 script = ExtResource("1_sqa0i")
 
@@ -1040,5 +1044,13 @@ position = Vector2(0, -32)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-135, 118)
 shape = SubResource("SegmentShape2D_5sfjl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(245, -2)
+shape = SubResource("SegmentShape2D_3hfy5")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-357, -35)
+shape = SubResource("SegmentShape2D_3hfy5")
 
 [editable path="Doors/Door_S"]

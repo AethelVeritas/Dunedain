@@ -156,14 +156,13 @@ func die():
 		game_over()
 
 func reset_player():
-	# Reset player health and position
+	# Reset player stats
 	current_health = max_health
 	arrow_count = max_arrows
 	is_dead = false
 	game_over_screen_active = false
-	global_position = initial_position # Respawn at initial spawn point
 
-	# Update UI
+	# Update UI before scene change
 	if health_bar:
 		health_bar.update_health(current_health, max_health)
 	if arrow_counter:
@@ -171,7 +170,10 @@ func reset_player():
 	if lives_display:
 		lives_display.update_lives(GameManager.get_player_lives())
 
-	print("Player respawned with", GameManager.get_player_lives(), "lives remaining")
+	print("Player respawning in introduction scene with", GameManager.get_player_lives(), "lives remaining")
+
+	# Change to introduction scene instead of respawning in current scene
+	get_tree().change_scene_to_file("res://scenes/introduction.tscn")
 
 func game_over():
 	print("Game Over! No lives remaining.")

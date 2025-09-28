@@ -544,7 +544,7 @@ animation = &"idle"
 zoom = Vector2(1.99, 1.99)
 limit_left = -302
 limit_top = -9999989
-limit_right = 298
+limit_right = 250
 limit_bottom = 131
 position_smoothing_enabled = true
 
