@@ -12,13 +12,18 @@ var arrow_count: int = max_arrows # Current arrow count
 
 var player_state
 var is_dead: bool = false
+var game_over_screen_active: bool = false
 #var bow_equiped = true
 var bow_reload = true
 var arrow = preload("res://scenes/arrow.tscn")
 
 func _physics_process(delta):
+	# Block all controls when game over screen is active
+	if game_over_screen_active:
+		return
+
 	var direction = Input.get_vector("left", "right", "up", "down")
-	
+
 	# Only update state if not shooting
 	if player_state != "shooting":
 		if direction == Vector2.ZERO:
@@ -152,6 +157,7 @@ func reset_player():
 	current_health = max_health
 	arrow_count = max_arrows
 	is_dead = false
+	game_over_screen_active = false
 	global_position = Vector2(0, 0) # Or whatever the spawn position should be
 
 	# Update UI
@@ -167,6 +173,9 @@ func reset_player():
 func game_over():
 	print("Game Over! No lives remaining.")
 
+	# Block all player controls
+	game_over_screen_active = true
+
 	# Show end game screen instead of quitting
 	var end_screen = preload("res://scenes/end_game_screen.tscn").instantiate()
 	get_tree().current_scene.add_child(end_screen)
@@ -181,6 +190,8 @@ func _ready():
 	# Reset stats when player spawns
 	current_health = max_health
 	arrow_count = max_arrows
+	is_dead = false
+	game_over_screen_active = false
 	if health_bar:
 		health_bar.update_health(current_health, max_health)
 	if arrow_counter:
