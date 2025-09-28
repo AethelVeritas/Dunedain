@@ -1,20 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6ldh85h6ndd1"]
 
-[ext_resource type="Texture2D" uid="uid://i5totv5mnkqh" path="res://icon.svg" id="1_mkf8s"]
 [ext_resource type="Script" uid="uid://dieptsq1ejwrx" path="res://scripts/bullet.gd" id="1_y25gk"]
+[ext_resource type="Texture2D" uid="uid://djchjlxhv4bku" path="res://sprites/bolt.png" id="2_y25gk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y25gk"]
-size = Vector2(127.5, 29)
+size = Vector2(68, 50.5)
 
 [node name="Bullet" type="Area2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_y25gk")
 damage = 20
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.125)
-texture = ExtResource("1_mkf8s")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_y25gk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.2083931, -9.109152e-09)
+rotation = 1.5707964
+scale = Vector2(6, 6.081)
+texture = ExtResource("2_y25gk")
+offset = Vector2(0.5, 0)

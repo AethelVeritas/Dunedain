@@ -237,6 +237,11 @@ region = Rect2(96, 192, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a8ls1"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qhqgy")
@@ -518,7 +523,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(11, 16)
+size = Vector2(11.055277, 15.442211)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(0, 2)
@@ -529,7 +534,7 @@ script = ExtResource("1_g2els")
 position = Vector2(0, -2)
 scale = Vector2(0.90625, 1)
 sprite_frames = SubResource("SpriteFrames_a8ls1")
-animation = &"w-shoot"
+animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]
 zoom = Vector2(1.99, 1.99)
@@ -542,6 +547,5 @@ position_smoothing_enabled = true
 position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-1.5, -1)
+position = Vector2(1.1980833e-07, -2.8316584)
 shape = SubResource("RectangleShape2D_g2els")

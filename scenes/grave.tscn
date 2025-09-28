@@ -1,19 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://c27oyuyjnlb80"]
+[gd_scene load_steps=5 format=3 uid="uid://c27oyuyjnlb80"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4bjk"]
-size = Vector2(33, 16)
+[ext_resource type="Texture2D" uid="uid://n8wecotdx57t" path="res://sprites/grave_stuff/Texture/TX Props.png" id="1_qpo7b"]
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlivn"]
+atlas = ExtResource("1_qpo7b")
+region = Rect2(278, 73, 95, 72)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 6.3455753
-offset_top = 0.09883261
-offset_right = 38.96869
-offset_bottom = 16.445177
-rotation = 1.5863701
-color = Color(0.84263474, 3.5616756e-06, 4.813075e-07, 1)
+[sub_resource type="SpriteFrames" id="SpriteFrames_inmiy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlivn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpo7b"]
+size = Vector2(70, 36.192146)
+
+[node name="Grave" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_inmiy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.9999998, 16.5)
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_t4bjk")
+position = Vector2(-6, -3.9440188)
+scale = Vector2(1, 1.1083057)
+shape = SubResource("RectangleShape2D_qpo7b")
