@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://od1uv6fufcp5"]
+[gd_scene load_steps=11 format=3 uid="uid://od1uv6fufcp5"]
 
 [ext_resource type="Script" uid="uid://bbsy7oaul87uh" path="res://scripts/start_screen.gd" id="1_script"]
 [ext_resource type="Texture2D" uid="uid://bw3vwr4gp45ul" path="res://sprites/buttons/pixel-play-button-vector-illustration-260nw-2206589713-removebg-preview.png" id="2_o7i0r"]
 [ext_resource type="Texture2D" uid="uid://bacrsre887cg7" path="res://sprites/background.webp" id="3_he1sj"]
+[ext_resource type="Texture2D" uid="uid://dqiq3x3b7f6rp" path="res://sprites/3.png" id="4_3"]
+[ext_resource type="Texture2D" uid="uid://c8h2n6q8x7j8a" path="res://sprites/tower 2 Idle/2.png" id="5_2"]
+[ext_resource type="Texture2D" uid="uid://b2k4m7p9y1n5c" path="res://sprites/tower 2 Idle/1.png" id="6_1"]
+[ext_resource type="Texture2D" uid="uid://f3g6h8j0k2l4m" path="res://sprites/tower 2 Idle/3.png" id="7_0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_background"]
 bg_color = Color(0, 0, 0, 0.8)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=66 format=3 uid="uid://bh1w0ho7ry2kq"]
+[gd_scene load_steps=67 format=3 uid="uid://bh1w0ho7ry2kq"]
 
 [ext_resource type="Script" uid="uid://clycbp5oqw18" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bge6alj2sagkr" path="res://sprites/Puny-Characters/Archer-Green.png" id="2_g2els"]
 [ext_resource type="PackedScene" path="res://scenes/health_bar.tscn" id="3_qhqgy"]
 [ext_resource type="PackedScene" path="res://scenes/arrow_counter.tscn" id="4_arrow"]
-[ext_resource type="PackedScene" path="res://scenes/lives_display.tscn" id="5_lives"]
+[ext_resource type="PackedScene" uid="uid://b3je7quakfg86" path="res://scenes/lives_display.tscn" id="5_lives"]
+[ext_resource type="AudioStream" uid="uid://byftlgrw3tfmg" path="res://sprites/sounds/bow-release-bow-and-arrow-4-101936.mp3" id="6_tuyoq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -566,8 +567,6 @@ offset_right = 772.0
 offset_bottom = 60.0
 
 [node name="LivesDisplay" parent="AnimatedSprite2D/Camera2D/CanvasLayer" instance=ExtResource("5_lives")]
-layout_mode = 3
-anchors_preset = 0
 offset_left = 656.0
 offset_top = 75.0
 offset_right = 776.0
@@ -579,3 +578,6 @@ position = Vector2(0, -2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.1980833e-07, -2.8316584)
 shape = SubResource("RectangleShape2D_g2els")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tuyoq")

@@ -1,18 +1,93 @@
-[gd_scene load_steps=3 format=3 uid="uid://lives_display"]
+[gd_scene load_steps=12 format=3 uid="uid://b3je7quakfg86"]
 
 [ext_resource type="Script" path="res://scripts/lives_display.gd" id="1_lives"]
+[ext_resource type="Texture2D" uid="uid://dvxftwysj00mv" path="res://sprites/HealthUI.png" id="2_8x1im"]
 
 [sub_resource type="LabelSettings" id="LivesLabelSettings"]
-font_size = 16
 font_color = Color(1, 0.2, 0.2, 1)
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x1im"]
+atlas = ExtResource("2_8x1im")
+region = Rect2(0, 55, 33, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dix4e"]
+atlas = ExtResource("2_8x1im")
+region = Rect2(0, 66, 33, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txpcp"]
+atlas = ExtResource("2_8x1im")
+region = Rect2(0, 33, 33, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvmpk"]
+atlas = ExtResource("2_8x1im")
+region = Rect2(0, 44, 33, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p10kt"]
+atlas = ExtResource("2_8x1im")
+region = Rect2(0, 11, 33, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1so3h"]
+atlas = ExtResource("2_8x1im")
+region = Rect2(0, 22, 33, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ffq2"]
+atlas = ExtResource("2_8x1im")
+region = Rect2(0, 0, 33, 11)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dix4e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x1im")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dix4e")
+}],
+"loop": false,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txpcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvmpk")
+}],
+"loop": false,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p10kt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1so3h")
+}],
+"loop": false,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ffq2")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}]
+
 [node name="LivesDisplay" type="Control"]
 custom_minimum_size = Vector2(120, 20)
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_lives")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,3 +98,9 @@ text = "♥ ♥ ♥"
 label_settings = SubResource("LivesLabelSettings")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(56, 23)
+scale = Vector2(3.265152, 3.2499995)
+sprite_frames = SubResource("SpriteFrames_dix4e")
+animation = &"0"

@@ -20,6 +20,17 @@ config/icon="res://icon.svg"
 GameManager="*res://scripts/game_manager.gd"
 NavigationManager="*res://scripts/navigation_manager.gd"
 TransitionScreen="*res://scenes/transition_screen.tscn"
+ScalingManager="*res://scripts/scaling_manager.gd"
+
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=600
+window/size/mode=3
+window/size/window_width_override=800
+window/size/window_height_override=600
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [global_group]
 

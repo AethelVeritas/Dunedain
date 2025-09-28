@@ -9,6 +9,7 @@ var arrow_count: int = max_arrows # Current arrow count
 @onready var health_bar: Control = $AnimatedSprite2D/Camera2D/CanvasLayer/HealthBar
 @onready var arrow_counter: Control = $AnimatedSprite2D/Camera2D/CanvasLayer/ArrowCounter
 @onready var lives_display: Control = $AnimatedSprite2D/Camera2D/CanvasLayer/LivesDisplay
+@onready var bow_audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var player_state
 var is_dead: bool = false
@@ -50,6 +51,7 @@ func _physics_process(delta):
 
 		# Wait for animation timing
 		await get_tree().create_timer(0.4).timeout # <-- full shoot anim duration
+		bow_audio.play()
 
 		# Spawn arrow mid-animation (adjust timing if needed)
 		var arrow_instance = arrow.instantiate()
