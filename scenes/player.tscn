@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://clycbp5oqw18" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bge6alj2sagkr" path="res://sprites/Puny-Characters/Archer-Green.png" id="2_g2els"]
 [ext_resource type="PackedScene" path="res://scenes/health_bar.tscn" id="3_qhqgy"]
-[ext_resource type="PackedScene" path="res://scenes/arrow_counter.tscn" id="4_arrow"]
+[ext_resource type="PackedScene" uid="uid://c8vt3j15l3iir" path="res://scenes/arrow_counter.tscn" id="4_arrow"]
 [ext_resource type="PackedScene" uid="uid://b3je7quakfg86" path="res://scenes/lives_display.tscn" id="5_lives"]
 [ext_resource type="AudioStream" uid="uid://byftlgrw3tfmg" path="res://sprites/sounds/bow-release-bow-and-arrow-4-101936.mp3" id="6_tuyoq"]
 
@@ -553,24 +553,22 @@ position_smoothing_enabled = true
 [node name="HealthBar" parent="AnimatedSprite2D/Camera2D/CanvasLayer" instance=ExtResource("3_qhqgy")]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 641.0
-offset_top = 11.0
-offset_right = 781.0
-offset_bottom = 31.0
+offset_left = 800.0
+offset_top = 16.0
+offset_right = 940.0
+offset_bottom = 36.0
 
 [node name="ArrowCounter" parent="AnimatedSprite2D/Camera2D/CanvasLayer" instance=ExtResource("4_arrow")]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 652.0
+offset_left = 808.0
 offset_top = 40.0
-offset_right = 772.0
+offset_right = 928.0
 offset_bottom = 60.0
 
 [node name="LivesDisplay" parent="AnimatedSprite2D/Camera2D/CanvasLayer" instance=ExtResource("5_lives")]
-offset_left = 656.0
-offset_top = 75.0
-offset_right = 776.0
-offset_bottom = 95.0
+offset_left = 816.0
+offset_top = 72.0
+offset_right = 936.0
+offset_bottom = 92.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -2)

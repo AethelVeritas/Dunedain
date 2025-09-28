@@ -13,7 +13,7 @@ func _ready():
 
 func update_arrows(current_arrows: int):
 	if label:
-		label.text = "Arrows: " + str(current_arrows)
+		label.text = str(current_arrows)
 
 		# Optional: Change color based on arrow count
 		var arrow_percent = float(current_arrows) / float(max_arrows)
