@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 @export var speed = 200
-@export var max_health: int = 1000
-@export var max_arrows = 100 # Maximum arrows the player can carry
+@export var max_health: int = 100
+@export var max_arrows = 100 
+
 var current_health: int = max_health
 var arrow_count: int = max_arrows # Current arrow count
-
-const GRAVE = preload("res://scenes/grave.tscn")
+@onready var health_bar: Control = $AnimatedSprite2D/Camera2D/CanvasLayer/HealthBar
 
 var player_state
 #var bow_equiped = true
@@ -107,6 +107,9 @@ func play_anim(dir: Vector2):
 func take_damage(amount: int):
 	current_health -= amount
 	print("Player health: ", current_health, "/", max_health)
+
+	if health_bar:
+		health_bar.update_health(current_health, max_health)
 	
 	if current_health <= 0:
 		die()
@@ -125,6 +128,8 @@ func _ready():
 	# Reset stats when player spawns
 	current_health = max_health
 	arrow_count = max_arrows
+	if health_bar:
+		health_bar.update_health(current_health, max_health)
 
 func add_arrows(amount: int):
 	arrow_count += amount		
