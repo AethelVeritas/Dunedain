@@ -159,7 +159,16 @@ func reset_player():
 
 func game_over():
 	print("Game Over! No lives remaining.")
-	get_tree().quit()
+
+	# Show end game screen instead of quitting
+	var end_screen = preload("res://scenes/end_game_screen.tscn").instantiate()
+	get_tree().current_scene.add_child(end_screen)
+
+	# Calculate stats
+	var graves_count = GameManager.get_grave_positions().size()
+	var lives_lost = GameManager.MAX_LIVES - GameManager.get_player_lives()
+
+	end_screen.show_end_screen(graves_count, lives_lost)
 
 func _ready():
 	# Reset stats when player spawns
