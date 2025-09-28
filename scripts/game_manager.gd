@@ -1,5 +1,9 @@
 extends Node
 
+# Player lives
+var player_lives: int = 3
+const MAX_LIVES: int = 3
+
 # Array to store grave positions
 var grave_positions: Array[Vector2] = []
 # Array to store arrow pickup positions
@@ -62,3 +66,19 @@ func get_grave_positions() -> Array[Vector2]:
 # Get all arrow pickup positions
 func get_arrow_pickup_positions() -> Array[Vector2]:
 	return arrow_pickup_positions.duplicate()
+
+# Lives management functions
+func get_player_lives() -> int:
+	return player_lives
+
+func lose_life() -> bool:
+	player_lives -= 1
+	print("Lives remaining: ", player_lives)
+	return player_lives > 0
+
+func reset_lives():
+	player_lives = MAX_LIVES
+	print("Lives reset to: ", player_lives)
+
+func is_game_over() -> bool:
+	return player_lives <= 0

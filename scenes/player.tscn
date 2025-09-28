@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bge6alj2sagkr" path="res://sprites/Puny-Characters/Archer-Green.png" id="2_g2els"]
 [ext_resource type="PackedScene" path="res://scenes/health_bar.tscn" id="3_qhqgy"]
 [ext_resource type="PackedScene" path="res://scenes/arrow_counter.tscn" id="4_arrow"]
+[ext_resource type="PackedScene" path="res://scenes/lives_display.tscn" id="5_lives"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_g2els")
@@ -557,6 +558,14 @@ offset_left = 916.0
 offset_top = 58.0
 offset_right = 1036.0
 offset_bottom = 78.0
+
+[node name="LivesDisplay" parent="AnimatedSprite2D/Camera2D/CanvasLayer" instance=ExtResource("5_lives")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 916.0
+offset_top = 78.0
+offset_right = 1036.0
+offset_bottom = 98.0
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -2)
