@@ -2,11 +2,13 @@ extends CharacterBody2D
 
 @export var speed = 200
 @export var max_health: int = 100
-@export var max_arrows = 10 # Maximum arrows the player can carry
+@export var max_arrows = 10
+
 var current_health: int = max_health
 var arrow_count: int = max_arrows # Current arrow count
-
-const GRAVE = preload("res://scenes/grave.tscn")
+@onready var health_bar: Control = $AnimatedSprite2D/Camera2D/CanvasLayer/HealthBar
+@onready var arrow_counter: Control = $AnimatedSprite2D/Camera2D/CanvasLayer/ArrowCounter
+@onready var lives_display: Control = $AnimatedSprite2D/Camera2D/CanvasLayer/LivesDisplay
 
 var player_state
 #var bow_equiped = true
@@ -40,7 +42,7 @@ func _physics_process(delta):
 		play_shoot_anim(mouse_loc_from_player)
 
 		# Wait for animation timing
-		await get_tree().create_timer(0.4).timeout  # <-- full shoot anim duration
+		await get_tree().create_timer(0.4).timeout # <-- full shoot anim duration
 
 		# Spawn arrow mid-animation (adjust timing if needed)
 		var arrow_instance = arrow.instantiate()
@@ -49,6 +51,8 @@ func _physics_process(delta):
 		add_child(arrow_instance)
 		arrow_count -= 1
 		print("Arrows remaining: ", arrow_count)
+		if arrow_counter:
+			arrow_counter.update_arrows(arrow_count)
 
 		# Resume movement state + animations
 		if direction == Vector2.ZERO:
@@ -107,6 +111,9 @@ func play_anim(dir: Vector2):
 func take_damage(amount: int):
 	current_health -= amount
 	print("Player health: ", current_health, "/", max_health)
+
+	if health_bar:
+		health_bar.update_health(current_health, max_health)
 	
 	if current_health <= 0:
 		$AnimatedSprite2D.play("death")
@@ -118,15 +125,55 @@ func die():
 	# Save grave position to game manager
 	GameManager.add_grave_position(global_position)
 
-	# Small delay before restarting scene
-	await get_tree().create_timer(0.5).timeout
-	get_tree().reload_current_scene()
+	# Lose a life
+	var has_lives_remaining = GameManager.lose_life()
+
+	# Update lives display
+	if lives_display:
+		lives_display.update_lives(GameManager.get_player_lives())
+
+	if has_lives_remaining:
+		# Reset player health and continue
+		await get_tree().create_timer(0.5).timeout
+		reset_player()
+	else:
+		# Game over - all lives lost
+		await get_tree().create_timer(0.5).timeout
+		game_over()
+
+func reset_player():
+	# Reset player health and position
+	current_health = max_health
+	arrow_count = max_arrows
+	global_position = Vector2(0, 0) # Or whatever the spawn position should be
+
+	# Update UI
+	if health_bar:
+		health_bar.update_health(current_health, max_health)
+	if arrow_counter:
+		arrow_counter.update_arrows(arrow_count)
+	if lives_display:
+		lives_display.update_lives(GameManager.get_player_lives())
+
+	print("Player respawned with", GameManager.get_player_lives(), "lives remaining")
+
+func game_over():
+	print("Game Over! No lives remaining.")
+	get_tree().quit()
 
 func _ready():
 	# Reset stats when player spawns
 	current_health = max_health
 	arrow_count = max_arrows
+	if health_bar:
+		health_bar.update_health(current_health, max_health)
+	if arrow_counter:
+		arrow_counter.update_arrows(arrow_count)
+	if lives_display:
+		lives_display.update_lives(GameManager.get_player_lives())
 
 func add_arrows(amount: int):
-	arrow_count += amount		
+	arrow_count += amount
 	print("Arrows remaining: ", arrow_count)
+	if arrow_counter:
+		arrow_counter.update_arrows(arrow_count)
