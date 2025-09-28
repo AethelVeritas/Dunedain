@@ -3,6 +3,7 @@ extends Node2D
 const GRAVE = preload("res://scenes/grave.tscn")
 const ARROW_PICKUP = preload("res://scenes/arrow_pickup.tscn")
 const TURRET = preload("res://scenes/turret.tscn")
+const END_GAME_SCREEN = preload("res://scenes/end_game_screen.tscn")
 
 func _ready():
 	# Reset lives for new game (only if it's actually a new game, not a respawn)
@@ -22,3 +23,15 @@ func _ready():
 		var arrow_pickup = ARROW_PICKUP.instantiate()
 		add_child(arrow_pickup)
 		arrow_pickup.global_position = pos
+
+	# Connect end screen area signal
+	$EndScreenArea.body_entered.connect(_on_end_screen_area_body_entered)
+
+func _on_end_screen_area_body_entered(body):
+	if body.name == "Player":
+		show_level_complete_screen()
+
+func show_level_complete_screen():
+	var end_screen = END_GAME_SCREEN.instantiate()
+	add_child(end_screen)
+	end_screen.show_level_complete()

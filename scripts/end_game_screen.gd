@@ -28,6 +28,19 @@ func _on_restart_button_pressed():
 	# Restart the game by going back to introduction
 	get_tree().change_scene_to_file("res://scenes/introduction.tscn")
 
+func show_level_complete():
+	# Update the title and labels for level completion
+	$Panel/VBoxContainer/TitleLabel.text = "LEVEL COMPLETE!"
+	$Panel/VBoxContainer/StatsLabel.text = "You've survived level one"
+	$Panel/VBoxContainer/GravesLabel.text = "and"
+	$Panel/VBoxContainer/LivesUsedLabel.text = "more will come later..."
+	$Panel/VBoxContainer/ButtonsContainer/RestartButton.text = "Continue"
+	$Panel/VBoxContainer/ButtonsContainer/QuitButton.text = "Main Menu"
+
+	# Show the screen
+	visible = true
+	animation_player.play("fade_in")
+
 func _on_quit_button_pressed():
 	# Quit the game
 	get_tree().quit()
